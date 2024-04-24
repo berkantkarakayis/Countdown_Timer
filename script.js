@@ -1,7 +1,6 @@
 const year = new Date().getFullYear();
 const april23 = new Date(year, 3, 23).getTime(); // 3: Nisan ayını temsil eder (0'dan başlayarak)
 const april23NextYear = new Date(year + 1, 3, 23).getTime();
-const month = new Date().getMonth();
 
 // countdown
 let timer = setInterval(function() {
@@ -9,9 +8,12 @@ let timer = setInterval(function() {
   // get today's date
   const today = new Date().getTime();
 
+  // get the current month
+  const month = new Date().getMonth();
+
   // get the difference
   let diff;
-  if (month > 3) {
+  if (month > 3 || (month === 3 && today > april23)) {
     diff = april23NextYear - today;
   } else {
     diff = april23 - today;
